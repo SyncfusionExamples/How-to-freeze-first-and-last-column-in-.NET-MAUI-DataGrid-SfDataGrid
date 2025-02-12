@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:local="clr-namespace:SfDataGridSample"
+             x:Class="SfDataGridSample.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:EmployeeViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+
+        <syncfusion:SfDataGrid x:Name="sfGrid"
+                               Grid.Column="0"
+                               VerticalScrollBarVisibility="Never"
+                               FrozenColumnCount="1"
+                               GridLinesVisibility="Both"
+                               HeaderGridLinesVisibility="Both"
+                               ColumnWidthMode="Auto"
+                               AutoGeneratingColumn="sfGrid1_AutoGeneratingColumn"
+                               ItemsSource="{Binding Employees}">
+
+        </syncfusion:SfDataGrid>
+        <syncfusion:SfDataGrid x:Name="sfGrid1"
+                               Grid.Column="1"
+                               GridLinesVisibility="Both"
+                               HeaderGridLinesVisibility="Both"
+                               ColumnWidthMode="Auto"
+                               AutoGenerateColumnsMode="None"
+                               ItemsSource="{Binding Employees}">
+
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:DataGridTextColumn MappingName="EmployeeID"
+                                               Format="#"
+                                               HeaderText="Employee ID" />
+            </syncfusion:SfDataGrid.Columns>
+
+        </syncfusion:SfDataGrid>
+
+        
+    </Grid>
+</ContentPage>
